@@ -1,6 +1,6 @@
 <?php 
 
-include('conn/connect.php');
+include('connect.php');
 echo $_POST['name'];
 if(isset($_POST['signUp'])){
     $firstName=trim($_POST['first_name']);
