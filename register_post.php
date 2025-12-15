@@ -59,6 +59,16 @@ elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 $password=trim($_POST['password']);
 
+if (empty($password)) {
+    $password_error = "<p>Please enter your password</p>";
+    header("Location: register.php?password_error=$password_error");
+    exit();
+}
+elseif (strlen($password) > 10) {
+    $password_error = "<p>Password must be less than 10 characters</p>";
+    header("Location: register.php?password_error=$password_error");
+    exit();
+
 
 $checkEmail="SELECT * From users where email='$email'";
 $result=mysqli_query($conn, $checkEmail);

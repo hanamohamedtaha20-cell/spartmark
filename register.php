@@ -59,6 +59,13 @@ if (isset($_GET['last_name_error'])) {
             <input type="password" name="password" id="password" placeholder="Password" >
             <label for="password">Password</label>
         </div>
+        <span style="color: red;">
+        <?php 
+        if (isset($_GET['password_error'])) {
+            echo $_GET['password_error'];
+        }
+        ?>
+</span>
        <input type="submit" class="btn" value="Sign Up" name="signUp">
       </form>
       <p class="or">
