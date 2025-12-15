@@ -8,6 +8,21 @@ $conn = mysqli_connect(
 );
 $firstName=trim($_POST['fName']);
 
+if (empty($firstName)) {
+    $user_error = "<p>Please enter your name</p>";
+    header("Location: register.php?user_error=$user_error");
+    exit();
+}
+elseif (is_numeric($firstName)) {
+    $user_error = "<p>Name cannot be numbers only</p>";
+    header("Location: register.php?user_error=$user_error");
+    exit();
+}
+elseif (preg_match('/[0-9]/', $firstName)) {
+    $user_error = "<p>Name must not contain numbers</p>";
+    $err_s = 1;
+}
+
 $lastName=trim($_POST['lName']);
 $email=trim(strtolower($_POST['email']));
 $password=trim($_POST['password']);

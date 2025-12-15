@@ -20,11 +20,13 @@ if (isset($user_error)) {
            <input type="text" name="fName" id="fName" placeholder="First Name" >
            <label for="fname">First Name</label>
         </div>
+        <span style="color: red;">
         <?php 
-if (isset($user_error)) {
-    echo $user_error;
+if (isset($_GET['user_error'])) {
+    echo $_GET['user_error'];
 }
 ?>
+</span>
 
         <div class="input-group">
             <i class="fas fa-user"></i>
