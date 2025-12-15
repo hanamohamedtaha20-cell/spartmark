@@ -33,15 +33,17 @@ if (isset($_GET['user_error'])) {
             <input type="text" name="lName" id="lName" placeholder="Last Name" >
             <label for="lName">Last Name</label>
         </div>
+        <span style="color: red;">
         <?php 
-if (isset($user_error)) {
-    echo $user_error;
+if (isset($_GET['last_name_error'])) {
+    echo $_GET['last_name_error'];
 }
 ?>
+</span>
 
         <div class="input-group">
             <i class="fas fa-envelope"></i>
-            <input type="email" name="email" id="email" placeholder="Email" >
+            <input type="text" name="email" id="email" placeholder="Email" >
             <label for="email">Email</label>
         </div>
         <span style="color: red;">

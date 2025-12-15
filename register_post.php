@@ -20,11 +20,43 @@ elseif (is_numeric($firstName)) {
 }
 elseif (preg_match('/[0-9]/', $firstName)) {
     $user_error = "<p>Name must not contain numbers</p>";
-    $err_s = 1;
+    header("Location: register.php?user_error=$user_error");
+    exit();
 }
 
 $lastName=trim($_POST['lName']);
+
+
+if (empty($lastName)) {
+    $last_name_error = "<p>Please enter your name</p>";
+    header("Location: register.php?last_name_error=$last_name_error");
+    exit();
+}
+elseif (is_numeric($lastName)) {
+    $last_name_error = "<p>Name cannot be numbers only</p>";
+    header("Location: register.php?last_name_error=$last_name_error");
+    exit();
+}
+elseif (preg_match('/[0-9]/', $lastName)) {
+    $last_name_error = "<p>Name must not contain numbers</p>";
+    header("Location: register.php?last_name_error=$last_name_error");
+    exit();
+}
+
 $email=trim(strtolower($_POST['email']));
+
+if (empty($email)) {
+    $email_error = "<p>Please enter your email</p>";
+    header("Location: register.php?email_error=$email_error");
+    exit();
+}
+elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $email_error = "<p>Please enter a valid email</p>";
+    header("Location: register.php?email_error=$email_error");
+    exit();
+}
+
+
 $password=trim($_POST['password']);
 
 
