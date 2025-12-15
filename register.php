@@ -15,10 +15,9 @@ if (isset($user_error)) {
     echo $user_error;
 }
 ?>
-
         <div class="input-group">
            <i class="fas fa-user"></i>
-           <input type="text" name="fName" id="fName" placeholder="First Name" required>
+           <input type="text" name="fName" id="fName" placeholder="First Name" >
            <label for="fname">First Name</label>
         </div>
         <?php 
@@ -29,7 +28,7 @@ if (isset($user_error)) {
 
         <div class="input-group">
             <i class="fas fa-user"></i>
-            <input type="text" name="lName" id="lName" placeholder="Last Name" required>
+            <input type="text" name="lName" id="lName" placeholder="Last Name" >
             <label for="lName">Last Name</label>
         </div>
         <?php 
@@ -40,18 +39,20 @@ if (isset($user_error)) {
 
         <div class="input-group">
             <i class="fas fa-envelope"></i>
-            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="email" name="email" id="email" placeholder="Email" >
             <label for="email">Email</label>
         </div>
+        <span style="color: red;">
         <?php 
-if (isset($user_error)) {
-    echo $user_error;
-}
+        if (isset($_GET['email_error'])) {
+            echo $_GET['email_error'];
+        }
 ?>
 
+</span>
         <div class="input-group">
             <i class="fas fa-lock"></i>
-            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="password" name="password" id="password" placeholder="Password" >
             <label for="password">Password</label>
         </div>
        <input type="submit" class="btn" value="Sign Up" name="signUp">
@@ -74,12 +75,12 @@ if (isset($user_error)) {
         <form method="post" action="register.php">
           <div class="input-group">
               <i class="fas fa-envelope"></i>
-              <input type="email" name="email" id="email" placeholder="Email" required>
+              <input type="email" name="email" id="email" placeholder="Email" >
               <label for="email">Email</label>
           </div>
           <div class="input-group">
               <i class="fas fa-lock"></i>
-              <input type="password" name="password" id="password" placeholder="Password" required>
+              <input type="password" name="password" id="password" placeholder="Password" >
               <label for="password">Password</label>
           </div>
           <p class="recover">
