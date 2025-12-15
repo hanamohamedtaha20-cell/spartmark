@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Cart - noon</title>
+  <link rel="stylesheet" href="add-to-card.css">
+</head>
+<body>
+<!-- English Noon-Style Navigation Bar -->
+<header class="navbar">
+  <!-- Top small bar -->
+  <div class="top-bar">
+    <div class="container">
+   <div class="top-links">
+     <a href="#">Sign in</a>
+     <span>|</span>
+     <a href="#">Create account</a>
+   </div>
+   <div class="language-switcher">
+     <select>
+       <option>English</option>
+       <option>العربية</option>
+     </select>
+   </div>
+ </div>
+  </div>
+
+  <!-- Main blue bar -->
+  <div class="main-nav">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <h1><a href="#">SparkMart</a></h1>
+      </div>
+
+      <!-- Search bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="What are you looking for?" />
+        <button type="submit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white">
+            <circle cx="11" cy="11" r="8" stroke-width="2"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Right icons -->
+      <div class="nav-icons">
+        <a href="#" class="icon-heart">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#003087">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span>Wishlist</span>
+        </a>
+
+        <a href="#" class="icon-cart">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#003087">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span>Cart</span>
+          <span class="cart-count">1</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom categories menu -->
+  <nav class="bottom-nav">
+    <div class="container">
+      <ul>
+        <li><a href="#">Electronics</a></li>
+        <li><a href="#">Fashion</a></li>
+        <li><a href="#">Home & Kitchen</a></li>
+        <li><a href="#">Supermarket</a></li>
+        <li><a href="#">Beauty</a></li>
+        <li><a href="#">Baby</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Toys</a></li>
+        <li><a href="#">Books</a></li>
+        <li><a href="#">More</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+  <div class="container">
+    <div class="cart-page">
+
+      <!-- Products Section -->
+      <div class="products-section">
+        <h2 class="section-title">Shopping Cart (1 item)</h2>
+
+        <div class="product-item">
+          <img src="https://via.placeholder.com/120" alt="Product" class="product-img">
+
+          <div class="product-details">
+            <h3 class="product-title">
+              Midea Mission Pro - Cooling Only 12K (1.5 HP) MSC1T-12CR-N
+            </h3>
+            <p class="product-info">
+              White • New • Sold by: Midea Store • Delivered Tuesday, Dec 23
+            </p>
+            <div class="price">EGP 1,949.00</div>
+
+            <div class="quantity">
+              <button onclick="changeQty(-1)" class="qty-btn">-</button>
+              <input type="text" value="1" id="qty" readonly>
+              <button onclick="changeQty(1)" class="qty-btn">+</button>
+            </div>
+
+            <div class="remove">Remove</div>
+          </div>
+        </div>
+        <!-- Add more products by copying the product-item div -->
+      </div>
+
+      <!-- Order Summary -->
+      <div class="summary-section">
+        <h3 class="summary-title">Order Summary</h3>
+
+        <div class="summary-row">
+          <span>Items (1)</span>
+          <span>EGP 1,949.00</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Delivery</span>
+          <span>Free</span>
+        </div>
+
+        <div class="free-shipping">
+          <strong>Free Delivery!</strong><br>
+          You're only EGP 500 away from free delivery
+        </div>
+
+        <div class="summary-row total">
+          <span>Total</span>
+          <span>EGP 1,949.00</span>
+        </div>
+
+        <p class="vat-note">(Inclusive of VAT)</p>
+
+        <button class="checkout-btn">Proceed to Checkout</button>
+
+        <div class="payment-installment">
+          <img src="https://via.placeholder.com/340x80/00bfa5/ffffff?text=0%25+Interest+Installments+with+valU" 
+               alt="0% Interest Installments">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function changeQty(change) {
+      const input = document.getElementById('qty');
+      let value = parseInt(input.value);
+      value += change;
+      if (value < 1) value = 1;
+      input.value = value;
+    }
+  </script>
+
+</body>
+</html>
