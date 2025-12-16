@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conn/connections.php');
+include('connect.php');
 
 if (isset($_POST['submit'])) {
 
@@ -9,40 +9,38 @@ if (isset($_POST['submit'])) {
 
     if (empty($username)) {
         $user_error = '<p>Please enter a username</p>';
-        $err_s = 1;
+        header("Location: login.php?user_error=$user_error");
+        exit();
     }
 
     if (empty($password)) {
         $user_error = '<p>Please enter a password</p>';
-        $err_s = 1;
+        $password_error = 1;
+        header("Location: login.php?password_error=$password_error");
+        exit();
     }
 
-    if ($err_s == 1) {
+    $sql = "SELECT email,password FROM users WHERE email = '$username'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    if (strtolower($row['email']) === strtolower($username) && md5($password) === $row['password']) {
+
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['email'] = $row['email'];
+
+        header('location: Home.php');
+
+    } else {
+
+        $user_error = '<p>Wrong username or password</p>';
         include('login.php');
         exit();
     }
-    $sql = "SELECT id,username,password FROM users WHERE username = '$username'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
 
-if ($row['username'] === $username && $row['password'] === $password) {
 
-    $_SESSION['id'] = $row['id'];
-    $_SESSION['username'] = $row['username'];
-
-    header('location: Home.php');
-
-} else {
-
-    $user_error = '<p>Wrong username or password</p>';
-    include('login.php');
-    exit();
 }
-
 else {
     include('login.php');
     exit();
 }
-}
-    
 ?>

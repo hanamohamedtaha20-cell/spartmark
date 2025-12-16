@@ -64,10 +64,11 @@ if (empty($password)) {
     header("Location: register.php?password_error=$password_error");
     exit();
 }
-elseif (strlen($password) > 10) {
-    $password_error = "<p>Password must be less than 10 characters</p>";
+elseif (strlen($password) < 8) {
+    $password_error = "<p>Password must be at least 8 characters</p>";
     header("Location: register.php?password_error=$password_error");
     exit();
+}
 
 
 $checkEmail="SELECT * From users where email='$email'";

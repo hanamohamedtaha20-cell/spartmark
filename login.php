@@ -24,13 +24,27 @@
       <form>
         <div class="input-group">
           <label>Email or Mobile Number</label>
-          <input type="text" placeholder="Enter your email or mobile" required />
+          <input type="text" placeholder="Enter your email or mobile" required name="username" />
         </div>
+        <span style="color: red;">
+        <?php 
+        if (isset($_GET['user_error'])) {
+            echo $_GET['user_error'];
+        }
+        ?>
+        </span>
 
         <div class="input-group">
           <label>Password</label>
-          <input type="password" placeholder="Enter your password" required />
+          <input type="password" placeholder="Enter your password" required name="password" />
         </div>
+        <span style="color: red;">
+        <?php 
+        if (isset($_GET['password_error'])) {
+            echo $_GET['password_error'];
+        }
+        ?>
+        </span>
 
         <div class="options">
           <label class="remember">
@@ -41,7 +55,7 @@
           <a href="#" class="forgot">Forgot password?</a>
         </div>
 
-        <button type="submit" class="signin-btn">Sign In</button>
+        <button type="submit" class="signin-btn" name="submit">Sign In</button>
       </form>
 
       <div class="divider">
